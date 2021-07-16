@@ -40,8 +40,9 @@ class Pipeable():
         if self.try_normal_call_first:
             try:
                 return self.base_object(*args, **kwargs)
-            except:
+            except Exception:
                 pass
+        
         if self.base_object is not None:
             # Typical behavior: Pipeable object is created when the Pipeable object is called, allowing for functions to be defined.
             return Pipeable(
